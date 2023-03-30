@@ -34,7 +34,7 @@ Key conditions are concerned with an OSM feature tag keys. When a key does not p
 
 There are three key conditions...
 <br/>
-#### **Must have**
+#### Must have
 
 | Attributes                  | Description                                                                                                       |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------|
@@ -42,8 +42,8 @@ There are three key conditions...
 | Validation Type             | Error                                                                                                             |
 | Example                     | With a 'must have building key' validation, the absence of a building tag key on a feature breaks the validation. |
 | keyCondition Representation | 1                                                                                                                 |
-<br/>
-#### **May have**
+
+#### May have
 
 | Attributes                  | Description                                                                                                    |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------|
@@ -51,8 +51,8 @@ There are three key conditions...
 | Validation Type             | Warning                                                                                                        |
 | Example                     | With a 'may be building key' validation, the absence of a building tag key on a feature breaks the validation. |
 | keyCondition representation | 2                                                                                                              |
-<br/>
-#### **Must Not have**
+
+#### Must Not have
 
 | Attributes                  | Description                                                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------------------|
@@ -60,22 +60,22 @@ There are three key conditions...
 | Validation Type             | Error                                                                                                                 |
 | Example                     | With a 'must not have building key validation, the presence of a building tag key on a feature breaks the validation. |
 | keyCondition Representation | 0                                                                                                                     |
-<br/>
-#### **Value conditions**
+
+#### Value conditions
 
 Value conditions are concerned with OSM feature tag values. When a tag value does not pass a value condition, that validation is broken.
 
 There six value conditions...
-<br/>
-#### **Must be**
+
+#### Must be
 
 | Attributes                  | Description                                                                                                                                                             |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Validation Type             | Error                                                                                                                                                                   |
 | Example                     | With an 'amenity must be 'clinic' or 'school' value condition, a feature tagged 'amenity=drinking_water' breaks the validation; 'amenity=school' passes the validation. |
 | valCondition representation | 1                                                                                                                                                                       |
-<br/>
-#### **May be**
+
+#### May be
 
 | Attributes                  | Description                                                                                                                                                             |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -83,8 +83,8 @@ There six value conditions...
 | Validation Type             | Warning                                                                                                                                                                 |
 | Example                     | With an 'amenity must be 'clinic' or 'school' value condition, a feature tagged 'amenity=drinking_water' breaks the validation; 'amenity=school' passes the validation. |
 | valCondition Representation | 2                                                                                                                                                                       |
-<br/>
-#### **Must not be**
+
+#### Must not be
 
 | Attributes                  | Description                                                                                                                                                                 |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -92,8 +92,8 @@ There six value conditions...
 | Validation Type             | Error                                                                                                                                                                       |
 | Example                     | With an 'amenity must not be 'clinic' or 'school' value condition, a feature tagged 'amenity=clinic' breaks the validation; 'amenity=drinking_water' passes the validation. |
 | valCondition Representation | 0                                                                                                                                                                           |
-<br/>
-#### **Must be less than**
+
+#### Must be less than
 
 | Attributes                  | Description                                                                                           |
 |-----------------------------|-------------------------------------------------------------------------------------------------------|
@@ -101,8 +101,8 @@ There six value conditions...
 | Validation Type             | Error                                                                                                 |
 | Example                     | With a 'lanes must be less than 3' value condition, a feature tagged 'lanes=3' breaks the validation. |
 | valCondition Representation | 3                                                                                                     |
-<br/>
-#### **Must be less than or equal to**
+
+#### Must be less than or equal to
 
 | Attributes                  | Description                                                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------------------|
@@ -110,8 +110,8 @@ There six value conditions...
 | Validation Type             | Error                                                                                                                 |
 | Example                     | With a 'lanes must be less than or equal to 3' value condition, a feature tagged wth 'lanes=4' breaks the validation. |
 | valCondition Representation | 4                                                                                                                     |
-<br/>
-#### **Must be greater than** 
+
+#### Must be greater than
 
 | Attributes                  | Description                                                                                                 |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------|
@@ -119,8 +119,8 @@ There six value conditions...
 | Validation Type             | Error                                                                                                       |
 | Example                     | With 'lanes must be greater than 3' value condition, a feature tagged with 'lanes=3' breaks the validation. |
 | valCondition Representation | 5                                                                                                           |
-<br/>
-#### **Must be greater than or equal to**
+
+#### Must be greater than or equal to
 
 | Attributes                  | Description                                                                                                        |
 |-----------------------------|--------------------------------------------------------------------------------------------------------------------|
@@ -128,7 +128,7 @@ There six value conditions...
 | Validation Type             | Error                                                                                                              |
 | Example                     | With 'lanes must be greater than or equal to 3' value condition, a feature tagged 'lanes=2' breaks the validation. |
 | valCondition Representation | 6                                                                                                                  |
-<br/>
+
 ## Validation Scenarios
 
 Combining key and value conditions generates many different validation scenarios.
@@ -136,63 +136,63 @@ As a small illustration, if a MapRules Validation set includes a 'key must be bu
 A feature without a building tag would throw an error, and one with building=house would throw a warning.
 
 Below are a set of tables to describe the different validation scenarios.
-<br/>
-#### **Must not be**
+
+#### Must not be
 
 |                   | Value Condition | Key Present |    Missing Key    |
 |:-----------------:|:---------------:|:-----------:|:-----------------:|
 | **Key Condition** |                 |             |                   |
 |       0           |                 |    error    | passes validation |
-<br/>
-#### **Value Must Not be in values array**
+
+#### Value Must Not be in values array
 
 |                   | Value Condition | Missing Key | Key Present & Values in values array | Key Present & Values not in values array |
 |:-----------------:|:---------------:|:-----------:|:------------------------------------:|:----------------------------------------:|
 | **Key Condition** |                 |             |                                      |                                          |
 |       1           |                 |    error    |                 error                |             passes validation            |
 |       2           |                 |   warning   |                 error                |             passes validation            |
-<br/>
-#### **Value Must be in values array**
+
+#### Value Must be in values array
 
 |                   | Value Condition | Missing Key | Key Present & Values in values array | Key Present & Values not in values array |
 |:-----------------:|:---------------:|:-----------:|:------------------------------------:|:----------------------------------------:|
 | **Key Condition** |                 |             |                                      |                                          |
 |         1         |                 |    error    |           passes validation          |                   error                  |
 |         2         |                 |   warning   |           passes validation          |                   error                  |
-<br/>
-#### **Value May be in values array**
+
+#### Value May be in values array
 
 |                   | Value Condition | Missing Key | Key Present & Values in values array | Key Present & Values not in values array |
 |:-----------------:|:---------------:|:-----------:|:------------------------------------:|:----------------------------------------:|
 | **Key Condition** |                 |             |                                      |                                          |
 |       1           |                 |    error    |           passes validation          |                  warning                 |
 |       2           |                 |   warning   |           passes validation          |                  warning                 |
-<br/>
-#### **Value Must be less than maximum**
+
+#### Value Must be less than maximum
 
 |                   | Value Condition | Missing Key | Key Present & Values less than maximum | Key Present & Value greater than or equal to maximum |
 |:-----------------:|:---------------:|:-----------:|:--------------------------------------:|:----------------------------------------------------:|
 | **Key Condition** |                 |             |                                        |                                                      |
 |       1           |                 |    error    |            passes validation           |                         error                        |
 |       2           |                 |   warning   |            passes validation           |                         error                        |
-<br/>
-#### **Value Must be less than or equal to maximum**
+
+#### Value Must be less than or equal to maximum
 
 |                   | Value Condition | Missing Key | Key Present & Values less than or equal to maximum | Key Present & Value greater than maximum |
 |:-----------------:|:---------------:|:-----------:|:--------------------------------------------------:|:----------------------------------------:|
 | **Key Condition** |                 |             |                                                    |                                          |
 |       1           |                 |    error    |                  passes validation                 |                   error                  |
 |       2           |                 |   warning   |                  passes validation                 |                   error                  |
-<br/>
-#### **Value Must be greater than minimum**
+
+#### Value Must be greater than minimum
 
 |                   | Value Condition | Missing Key | Key Present & Values less than or equal to maximum | Key Present & Value greater than |
 |:-----------------:|:---------------:|:-----------:|:--------------------------------------------------:|:--------------------------------:|
 | **Key Condition** |                 |             |                                                    |                                  |
 |       1           |                 |    error    |                        error                       |         passes validation        |
 |       2           |                 |   warning   |                        error                       |         passes validation        |
-<br/>
-#### **Value Must be greater than or equal to minimum**
+
+#### Value Must be greater than or equal to minimum
 
 |                   | Value Condition | Missing Key | Key Present & Values less than maximum | Key Present & Value greater than or equal to |
 |:-----------------:|:---------------:|:-----------:|:--------------------------------------:|:--------------------------------------------:|
